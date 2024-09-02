@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'https://chat-application-client-psi.vercel.app', 
+    origin: 'https://chat-application-client-psi.vercel.app/', 
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
@@ -18,7 +18,7 @@ const io = new Server(server, {
 });
 app.use(
   cors({
-    origin: 'https://chat-application-client-psi.vercel.app', 
+    origin: 'https://chat-application-client-psi.vercel.app/', 
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
