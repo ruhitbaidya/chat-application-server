@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'https://chat-application-client-psi.vercel.app/', 
+    origin: 'https://chat-application-client-psi.vercel.app', 
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
@@ -18,7 +18,7 @@ const io = new Server(server, {
 });
 app.use(
   cors({
-    origin: 'https://chat-application-client-psi.vercel.app/', 
+    origin: 'https://chat-application-client-psi.vercel.app', 
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
@@ -33,8 +33,9 @@ io.on("connection", (socket) => {
 
     const ids = users.find((item)=> data.reciverE === item.email);
     const ids2 = users.find((item)=> data.senderId === item.email);
-
-    io.to(ids.socketId).to(ids2.socketId).emit('addMsg', data)
+    const sender = ids?.socketId || 'asdfjkfd45asdf';
+    const received = ids2?.socketId || 'asdfjkfd45asdf';
+    io.to(sender).to(received).emit('addMsg', data)
   })
   socket.on('disconnect', ()=>{
     const activeUser = users.filter((item)=> item.socketId !== socket.id);
