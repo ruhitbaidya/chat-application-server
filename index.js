@@ -10,16 +10,19 @@ app.use(express.urlencoded({ extended: true }));
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://chat-application-client-psi.vercel.app",
-    methods: ["GET", "POST"]
-  },
+    origin: 'https://chat-application-client-psi.vercel.app', 
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}
 });
 app.use(
   cors({
-    origin: "https://chat-application-client-psi.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
+    origin: 'https://chat-application-client-psi.vercel.app', 
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+})
 );
 let users = [];
 io.on("connection", (socket) => {
