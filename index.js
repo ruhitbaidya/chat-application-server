@@ -18,7 +18,7 @@ const io = new Server(server, {
 app.use(
   cors({
     origin: "https://chat-application-client-psi.vercel.app",
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
@@ -141,6 +141,6 @@ async function run() {
 }
 run().catch(console.dir);
 
-server.listen(7000, (err) => {
+server.listen(5000, (err) => {
   console.log(`this post is run 7000 port`);
 });
