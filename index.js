@@ -12,7 +12,6 @@ const io = new Server(server, {
   cors: {
     origin: 'https://chat-application-client-psi.vercel.app', 
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }
 });
@@ -20,7 +19,6 @@ app.use(
   cors({
     origin: 'https://chat-application-client-psi.vercel.app', 
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 })
 );
